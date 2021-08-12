@@ -1,0 +1,103 @@
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Escape Group</title>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@escgroup_">
+    <meta property="og:url" content="https://esc-org.github.io/">
+    <meta property="og:title" content="Escape Group">
+    <meta property="og:description" content="人のチカラは、偉大だ">
+    <meta property="og:image" content="https://user-images.githubusercontent.com/67098414/129159724-419645ff-4f37-495a-8dfa-a21d8864658e.png">
+    <link rel="shortcut icon" type="image/png" href="https://github.com/esc-org.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@700&family=M+PLUS+Rounded+1c:wght@500&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-light d-flex flex-column" style="min-height: 100vh;">
+    <div class="flex-row">
+        <header>
+            <img src="https://user-images.githubusercontent.com/67098414/129015495-1875494e-dcdb-481b-b81f-1bfe86c9b9ee.jpg" class="w-100" style="max-height: 20vh; object-fit: cover;">
+        </header>
+        <div class="row mx-0">
+            <div class="col-md-8 col-12 mx-auto bg-white pt-3">
+                <div class="mb-4" style="background-color: #def; background-image: repeating-linear-gradient(-45deg, #fff, #fff 12px, transparent 0, transparent 18px); text-shadow: 1px 0 0 #fff, 0 1px 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;">
+                    <p class="fw-bold display-1 text-center" style="font-family: 'Courier Prime', monospace;">Escape Group</p>
+                    <p class="text-center h5 pb-3" style="font-family: 'M PLUS Rounded 1c', serif;">〜人のチカラは、偉大だ〜</p>
+                </div>
+                <h2># ABOUT US</h2>
+                <div class="m-3">
+                    <p>Escape Groupは、プログラミングなどに興味がある人が集まって知識を共有したり、一緒になにかを作り上げたりするグループです。</p>
+                    <p>現在メンバーは21人、元気に活動しています。</p>
+                </div>
+                <h2># MEMBERS</h2>
+                <noscript class="m-3">
+                    <a href="https://twitter.com/i/lists/1425274895445893123">Twitterのリストを見る</a>
+                </noscript>
+                <div class="m-3 swiper-container" id="members" style="display: none; height: 320px;">
+                    <div class="swiper-wrapper" id="swiper-wrapper">
+                    </div>
+                    <div id="swiper-loaded" style="display: none;">
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                </div>
+                <h2># SNS</h2>
+                <p class="m-3">Twitterをメインに活動しています。最新情報もTwitterをご覧ください。</p>
+                <div class="card m-3 bg-light">
+                    <div class="card-title mx-3 my-2" style="color: #55acee;"><i class="fab fa-twitter"></i> Timeline</div>
+                    <div class="mx-2 mb-2">
+                        <a class="twitter-timeline" href="https://twitter.com/escgroup_?ref_src=twsrc%5Etfw" data-height="400" data-chrome="noheader nofooter">Tweets by escgroup_</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    </div>
+                </div>
+                <h2># CONTACT</h2>
+                <div class="m-3">
+                    <a href="https://twitter.com/escgroup_">Twitter</a>のDM、またはメール(<a href="mailto:master.escgroup@gmail.com">master.escgroup@gmail.com</a>)までご連絡ください。
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-auto bg-dark text-light text-center py-2">
+        <small>&copy; 2021 Escape Group</small>
+    </div>
+    <script type="text/javascript">
+        document.getElementById('members').style.display = 'block';
+        let wrapper = document.getElementById('swiper-wrapper');
+        wrapper.innerHTML = 'Loading...';
+        fetch('https://escgroup.herokuapp.com/members')
+            .then(r => {
+                return r.json();
+            })
+            .then(j => {
+                wrapper.innerHTML = '';
+                for (let user of j.users) {
+                            wrapper.innerHTML += '<div class="swiper-slide"><div class="card h-100"><img src="' + user.image + '" class="card-img-top" width="100%" height="180" style="object-fit: cover;"><div class="card-body"><div class="card-tiitle"><span class="fw-bold">' + user.name + '<\/span><br><span class="text-secondary"> @' + user.screen_name + '<\/span><\/div><div class="card-text" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">' + user.description + '<\/div><a href="https://twitter.com/' + user.screen_name + '" target="_blank"><div class="btn btn-sm btn-outline-light mt-2 w-100" style="color: #55acee; border-color: #55acee;"><i class="fab fa-twitter"><\/i> Visit Profile<\/div><\/a><\/div><\/div><\/div>';
+                }
+                var mySwiper = new Swiper ('.swiper-container', {
+                    slidesPerView:1.5,
+                    spaceBetween: 10,
+                    centeredSlides : true,
+                    autoplay: {
+                        delay: 3000,
+                    },
+                    loop: true,
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    }
+                });
+                document.getElementById('swiper-loaded').style.display = 'block';
+            })
+            .cache(e => {
+                wrapper.innerHTML = '<a href="https://twitter.com/i/lists/1425274895445893123">Twitterのリストを見る<\/a>';
+                console.log(e);
+            });
+    </script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+</body>
+</html>
