@@ -5,7 +5,7 @@
     <title>Escape Group</title>
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@escgroup_">
-    <meta property="og:url" content="https://esc-org.github.io/">
+    <meta property="og:url" content="https://www.escgrp.org/">
     <meta property="og:title" content="Escape Group">
     <meta property="og:description" content="人のチカラは、偉大だ">
     <meta property="og:image" content="https://user-images.githubusercontent.com/67098414/129159724-419645ff-4f37-495a-8dfa-a21d8864658e.png">
@@ -69,7 +69,7 @@
         document.getElementById('members').style.display = 'block';
         let wrapper = document.getElementById('swiper-wrapper');
         wrapper.innerHTML = 'Loading...';
-        fetch('https://escgroup.herokuapp.com/members')
+        fetch('https://api.escgrp.org/members')
             .then(r => {
                 return r.json();
             })
