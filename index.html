@@ -78,7 +78,7 @@
                 <p class="m-3">Twitterをメインに活動しています。最新情報もTwitterをご覧ください。</p>
                 <div class="card m-3 bg-light">
                     <div class="card-title mx-3 my-2" style="color: #55acee;"><i class="fab fa-twitter"></i> Timeline</div>
-                    <div class="mx-2 mb-2">
+                    <div class="mx-2 mb-2 twfont">
                         <a class="twitter-timeline" href="https://twitter.com/escgroup_?ref_src=twsrc%5Etfw" data-height="400" data-chrome="noheader nofooter">Tweets by escgroup_</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                     </div>
                 </div>
@@ -129,5 +129,11 @@
     </script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <script>
+        twttr.events.bind('loaded', function() {
+            tl = document.getElementsByClassName('twitter-timeline-rendered')[0].contentWindow.document;
+            tl.head.innerHTML += '<style>@font-face{font-family:TwitterChirp;src:url(https://abs.twimg.com/fonts/chirp-regular-web.woff2) format("woff2");src:url(https://abs.twimg.com/fonts/chirp-regular-web.woff) format("woff");font-weight:400;font-style:"normal";font-display:"swap";}body{font-family:TwitterChirp;}<\/style>';
+        });
+    </script>
 </body>
 </html>
