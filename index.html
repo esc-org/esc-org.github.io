@@ -25,6 +25,25 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@700&family=M+PLUS+Rounded+1c:wght@500&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: TwitterChirp;
+            src: url(https://abs.twimg.com/fonts/chirp-regular-web.woff2) format('woff2');
+            src: url(https://abs.twimg.com/fonts/chirp-regular-web.woff) format('woff');
+            font-weight: 400;
+            font-style: 'normal';
+            font-display: 'swap';
+        }
+        .twfont {
+            font-family: TwitterChirp;
+        }
+        img.emoji {
+            height: 1em;
+            width: 1em;
+            margin: 0 .05em 0 .1em;
+            vertical-align: -0.1em;
+        }
+    </style>
 </head>
 
 <body class="bg-dark d-flex flex-column" style="min-height: 100vh;">
@@ -47,7 +66,7 @@
                 <noscript class="m-3">
                     <a href="https://twitter.com/i/lists/1425274895445893123">Twitterのリストを見る</a>
                 </noscript>
-                <div class="m-3 swiper-container" id="members" style="display: none; height: calc(180px + 9em);">
+                <div class="m-3 swiper-container twfont" id="members" style="display: none; height: calc(180px + 9em);">
                     <div class="swiper-wrapper" id="swiper-wrapper">
                     </div>
                     <div id="swiper-loaded" style="display: none;">
@@ -73,6 +92,7 @@
     <div class="mt-auto bg-dark text-light text-center py-2">
         <small>&copy; 2021 Escape Group</small>
     </div>
+    <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
         document.getElementById('members').style.display = 'block';
         let wrapper = document.getElementById('swiper-wrapper');
@@ -86,6 +106,7 @@
                 for (let user of j.users) {
                             wrapper.innerHTML += '<div class="swiper-slide"><div class="card h-100"><img src="' + user.image + '" class="card-img-top" width="100%" height="180" style="object-fit: cover;"><div class="card-body"><div class="card-tiitle"><div class="fw-bold" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">' + user.name + '<\/div><div class="text-secondary" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"> @' + user.screen_name + '<\/div><\/div><div class="card-text" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">' + user.description + '<\/div><a href="https://twitter.com/' + user.screen_name + '" target="_blank"><div class="btn btn-sm btn-outline-light mt-2 w-100" style="color: #55acee; border-color: #55acee;"><i class="fab fa-twitter"><\/i> Visit Profile<\/div><\/a><\/div><\/div><\/div>';
                 }
+                twemoji.parse(wrapper);
                 var mySwiper = new Swiper ('.swiper-container', {
                     slidesPerView:1.5,
                     spaceBetween: 10,
