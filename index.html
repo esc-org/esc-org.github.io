@@ -66,7 +66,7 @@
                 <noscript class="m-3">
                     <a href="https://twitter.com/i/lists/1425274895445893123">Twitterのリストを見る</a>
                 </noscript>
-                <div class="m-3 swiper-container twfont" id="members" style="display: none; height: calc(180px + 9em);">
+                <div class="m-3 swiper twfont" id="members" style="display: none; height: calc(180px + 9em);">
                     <div class="swiper-wrapper" id="swiper-wrapper">
                     </div>
                     <div id="swiper-loaded" style="display: none;">
@@ -113,7 +113,7 @@
                             wrapper.innerHTML += '<div class="swiper-slide"><div class="card h-100"><img src="' + user.image + '" class="card-img-top" width="100%" height="180" style="object-fit: cover;"><div class="card-body"><div class="card-tiitle"><div class="fw-bold" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">' + user.name + '<\/div><div class="text-secondary" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"> @' + user.screen_name + '<\/div><\/div><div class="card-text" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">' + user.description + '<\/div><a href="https://twitter.com/' + user.screen_name + '" target="_blank"><div class="btn btn-sm btn-outline-light mt-2 w-100" style="color: #55acee; border-color: #55acee;"><i class="fab fa-twitter"><\/i> Visit Profile<\/div><\/a><\/div><\/div><\/div>';
                 }
                 twemoji.parse(wrapper);
-                var mySwiper = new Swiper ('.swiper-container', {
+                var mySwiper = new Swiper ('.swiper', {
                     slidesPerView:1.5,
                     spaceBetween: 10,
                     centeredSlides : true,
